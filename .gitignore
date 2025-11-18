@@ -1,0 +1,27 @@
+# Executável compilado
+compiler
+
+# Arquivos objeto
+*.o
+*.obj
+
+# Arquivos de debug
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Arquivos temporários
+*~
+*.swp
+*.swo
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# Outros
+*.log
+
