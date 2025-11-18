@@ -1,0 +1,20 @@
+function fatorial(n) {
+    return n * (n - 1);
+}
+
+function quadratica(a, b, c, x) {
+    termo1 = a * x ^ 2;
+    termo2 = b * x;
+    resultado = termo1 + termo2 + c;
+    return resultado;
+}
+
+function distancia(x1, y1, x2, y2) {
+    dx = x2 - x1;
+    dy = y2 - y1;
+    dx2 = dx ^ 2;
+    dy2 = dy ^ 2;
+    soma = dx2 + dy2;
+    return soma;
+}
+

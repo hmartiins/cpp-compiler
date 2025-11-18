@@ -1,0 +1,30 @@
+function calcular(a, b, c) {
+    x = a + b;
+    y = x * c;
+    z = y / 2;
+    return z;
+}
+
+function media(a, b) {
+    soma = a + b;
+    resultado = soma / 2;
+    return resultado;
+}
+
+function formula(x) {
+    a = x * 2;
+    b = a + 5;
+    c = b ^ 2;
+    d = c - 10;
+    return d;
+}
+
+function chamarOutra(p) {
+    resultado = quadrado(p);
+    return resultado + 1;
+}
+
+function quadrado(n) {
+    return n * n;
+}
+

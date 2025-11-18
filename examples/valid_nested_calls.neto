@@ -1,0 +1,22 @@
+function dobro(x) {
+    return x * 2;
+}
+
+function quadrado(n) {
+    return n * n;
+}
+
+function processar(a, b) {
+    x = dobro(a);
+    y = quadrado(b);
+    resultado = x + y;
+    return resultado;
+}
+
+function complexo() {
+    temp1 = dobro(5);
+    temp2 = quadrado(temp1);
+    temp3 = processar(temp2, 3);
+    return temp3;
+}
+

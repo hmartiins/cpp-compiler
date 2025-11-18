@@ -1,0 +1,9 @@
+function soma(a, b) {
+    return a + b;
+}
+
+function teste() {
+    x = soma(1, 2, 3);
+    return x;
+}
+
