@@ -1,4 +1,4 @@
-function teste() {
+func teste() {
     return 10 + ;
 }
 

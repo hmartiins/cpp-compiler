@@ -1,14 +1,14 @@
-function quadrado(x) {
+func quadrado(x) {
     return x * x;
 }
 
-function cubo(n) {
+func cubo(n) {
     temp = n * n;
     resultado = temp * n;
     return resultado;
 }
 
-function potencia(base, exp) {
+func potencia(base, exp) {
     return base ^ exp;
 }
 

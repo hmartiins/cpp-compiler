@@ -1,8 +1,8 @@
-function teste() {
+func teste() {
     return x + 5;
 }
 
-function main() {
+func main() {
     y = funcaoInexistente(10);
     return y;
 }

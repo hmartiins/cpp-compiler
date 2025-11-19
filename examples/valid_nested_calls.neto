@@ -1,19 +1,19 @@
-function dobro(x) {
+func dobro(x) {
     return x * 2;
 }
 
-function quadrado(n) {
+func quadrado(n) {
     return n * n;
 }
 
-function processar(a, b) {
+func processar(a, b) {
     x = dobro(a);
     y = quadrado(b);
     resultado = x + y;
     return resultado;
 }
 
-function complexo() {
+func complexo() {
     temp1 = dobro(5);
     temp2 = quadrado(temp1);
     temp3 = processar(temp2, 3);

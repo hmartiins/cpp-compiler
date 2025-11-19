@@ -1,12 +1,12 @@
-function soma(a, b) {
+func soma(a, b) {
     return a + b;
 }
 
-function subtracao(x, y) {
+func subtracao(x, y) {
     return x - y;
 }
 
-function multiplicacao(m, n) {
+func multiplicacao(m, n) {
     return m * n;
 }
 

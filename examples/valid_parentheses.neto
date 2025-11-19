@@ -1,16 +1,16 @@
-function calcular(a, b, c) {
+func calcular(a, b, c) {
     resultado = (a + b) * c;
     return resultado;
 }
 
-function complexa(x, y) {
+func complexa(x, y) {
     temp1 = (x + y) * (x - y);
     temp2 = ((x * 2) + (y * 3)) / 5;
     resultado = temp1 + temp2;
     return resultado;
 }
 
-function potencias(base) {
+func potencias(base) {
     p2 = base ^ 2;
     p3 = base ^ (2 + 1);
     soma = p2 + p3;

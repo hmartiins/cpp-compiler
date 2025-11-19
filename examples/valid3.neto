@@ -1,17 +1,17 @@
-function calcular(a, b, c) {
+func calcular(a, b, c) {
     x = a + b;
     y = x * c;
     z = y / 2;
     return z;
 }
 
-function media(a, b) {
+func media(a, b) {
     soma = a + b;
     resultado = soma / 2;
     return resultado;
 }
 
-function formula(x) {
+func formula(x) {
     a = x * 2;
     b = a + 5;
     c = b ^ 2;
@@ -19,12 +19,12 @@ function formula(x) {
     return d;
 }
 
-function chamarOutra(p) {
+func chamarOutra(p) {
     resultado = quadrado(p);
     return resultado + 1;
 }
 
-function quadrado(n) {
+func quadrado(n) {
     return n * n;
 }
 

@@ -1,8 +1,8 @@
-function soma(a, b) {
+func soma(a, b) {
     return a + b;
 }
 
-function teste() {
+func teste() {
     x = soma(1, 2, 3);
     return x;
 }
