@@ -21,7 +21,7 @@ bool Compiler::compile(const std::string& source) {
     for (const auto& tok : tokens) {
         if (tok.type == UNKNOWN) {
             std::cout << "REJEITADO" << std::endl;
-            std::cout << "Erro léxico na linha " << tok.line << ", coluna " << tok.column 
+            std::cout << "[ERROR] Erro léxico na linha " << tok.line << ", coluna " << tok.column 
                      << ": caractere inválido '" << tok.lexeme << "'" << std::endl;
             return false;
         }
@@ -63,10 +63,9 @@ bool Compiler::compile(const std::string& source) {
         return false;
     }
     
-    if (verbose) std::cout << "Análise semântica concluída com sucesso." << std::endl << std::endl;
+    if (verbose) std::cout << "[SUCCESS] Análise semântica concluída com sucesso." << std::endl << std::endl;
     
-    // Sucesso!
-    std::cout << "ACEITO" << std::endl;
+    std::cout << "[SUCCESS] Compilação concluída com sucesso." << std::endl;
     
     delete ast;
     return true;
@@ -75,7 +74,7 @@ bool Compiler::compile(const std::string& source) {
 bool Compiler::compileFile(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "Erro: não foi possível abrir o arquivo '" << filename << "'" << std::endl;
+        std::cerr << "[ERROR] Não foi possível abrir o arquivo '" << filename << "'" << std::endl;
         return false;
     }
     

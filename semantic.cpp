@@ -89,7 +89,7 @@ bool SemanticAnalyzer::analyzeNode(ASTNode* node) {
                         
                         // Verificar duplicação
                         if (functions.find(funcName) != functions.end()) {
-                            errorMsg = "Erro semântico: função '" + funcName + "' já foi declarada";
+                            errorMsg = "[ERROR] Erro semântico: função '" + funcName + "' já foi declarada";
                             return false;
                         }
                         
@@ -196,7 +196,7 @@ bool SemanticAnalyzer::analyzeExpr(ASTNode* node) {
         
         // Verificar se é variável ou parâmetro
         if (!checkIdentifier(idName)) {
-            errorMsg = "Erro semântico: identificador '" + idName + "' não foi declarado";
+            errorMsg = "[ERROR] Erro semântico: identificador '" + idName + "' não foi declarado";
             return false;
         }
         
@@ -210,7 +210,7 @@ bool SemanticAnalyzer::analyzeExpr(ASTNode* node) {
             
             // Verificar se função existe
             if (functions.find(funcName) == functions.end()) {
-                errorMsg = "Erro semântico: função '" + funcName + "' não foi declarada";
+                errorMsg = "[ERROR] Erro semântico: função '" + funcName + "' não foi declarada";
                 return false;
             }
             
@@ -219,7 +219,7 @@ bool SemanticAnalyzer::analyzeExpr(ASTNode* node) {
             int expectedCount = functions[funcName].params.size();
             
             if (argsCount != expectedCount) {
-                errorMsg = "Erro semântico: função '" + funcName + "' espera " + 
+                errorMsg = "[ERROR] Erro semântico: função '" + funcName + "' espera " + 
                           std::to_string(expectedCount) + " argumento(s), mas " + 
                           std::to_string(argsCount) + " foi(ram) fornecido(s)";
                 return false;

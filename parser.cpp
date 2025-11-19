@@ -22,7 +22,7 @@ bool Parser::expect(TokenType type, const std::string& msg) {
         advance();
         return true;
     }
-    errorMsg = "Erro sintático na linha " + std::to_string(currentToken.line) + 
+    errorMsg = "[ERROR] Erro sintático na linha " + std::to_string(currentToken.line) + 
                ", coluna " + std::to_string(currentToken.column) + ": " + msg +
                ". Encontrado: " + currentToken.lexeme;
     return false;
@@ -42,7 +42,7 @@ ASTNode* Parser::parse() {
     }
     
     if (!match(END_OF_FILE)) {
-        errorMsg = "Erro sintático: esperado fim de arquivo na linha " + 
+        errorMsg = "[ERROR] Erro sintático: esperado fim de arquivo na linha " + 
                    std::to_string(currentToken.line);
         delete root;
         return nullptr;
@@ -98,7 +98,7 @@ ASTNode* Parser::parseFunctionDecl() {
     }
     
     if (!match(ID)) {
-        errorMsg = "Erro sintático: esperado nome da função na linha " + 
+        errorMsg = "[ERROR] Erro sintático: esperado nome da função na linha " + 
                    std::to_string(currentToken.line);
         delete node;
         return nullptr;
@@ -164,7 +164,7 @@ ASTNode* Parser::parseParamList() {
     ASTNode* node = new ASTNode(PARAM_LIST);
     
     if (!match(ID)) {
-        errorMsg = "Erro sintático: esperado identificador de parâmetro na linha " + 
+        errorMsg = "[ERROR] Erro sintático: esperado identificador de parâmetro na linha " + 
                    std::to_string(currentToken.line);
         delete node;
         return nullptr;
@@ -249,7 +249,7 @@ ASTNode* Parser::parseStatement() {
             return nullptr;
         }
     } else {
-        errorMsg = "Erro sintático: esperado statement na linha " + 
+        errorMsg = "[ERROR] Erro sintático: esperado statement na linha " + 
                    std::to_string(currentToken.line);
         delete node;
         return nullptr;
@@ -443,7 +443,7 @@ ASTNode* Parser::parseBase() {
             return nullptr;
         }
     } else {
-        errorMsg = "Erro sintático: esperado expressão na linha " + 
+        errorMsg = "[ERROR] Erro sintático: esperado expressão na linha " + 
                    std::to_string(currentToken.line);
         delete node;
         return nullptr;
