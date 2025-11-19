@@ -4,6 +4,7 @@
 #include <string>
 
 std::string logError(const std::string& msg);
+std::string logSuccess(const std::string& msg);
 
 #endif // UTILS_H
 

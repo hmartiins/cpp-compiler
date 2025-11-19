@@ -65,9 +65,9 @@ bool Compiler::compile(const std::string& source) {
         return false;
     }
     
-    if (verbose) std::cout << "[SUCCESS] Análise semântica concluída com sucesso." << std::endl << std::endl;
+    if (verbose) std::cout << logSuccess("[SUCCESS] Análise semântica concluída com sucesso.") << std::endl << std::endl;
     
-    std::cout << "[SUCCESS] Compilação concluída com sucesso." << std::endl;
+    std::cout << logSuccess("[SUCCESS] Compilação concluída com sucesso.") << std::endl;
     
     delete ast;
     return true;
