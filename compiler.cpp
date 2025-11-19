@@ -22,7 +22,7 @@ bool Compiler::compile(const std::string& source) {
     // Verificar erros léxicos
     for (const auto& tok : tokens) {
         if (tok.type == UNKNOWN) {
-            std::cout << "REJEITADO" << std::endl;
+            std::cout << logError("REJEITADO") << std::endl;
             std::cout << logError("[ERROR] Erro léxico na linha " + std::to_string(tok.line) + ", coluna " + 
                      std::to_string(tok.column) + ": caractere inválido '" + tok.lexeme + "'") << std::endl;
             return false;
@@ -46,7 +46,7 @@ bool Compiler::compile(const std::string& source) {
     ASTNode* ast = parser.parse();
     
     if (!ast) {
-        std::cout << "REJEITADO" << std::endl;
+        std::cout << logError("REJEITADO") << std::endl;
         std::cout << parser.getError() << std::endl;
         return false;
     }
@@ -59,7 +59,7 @@ bool Compiler::compile(const std::string& source) {
     bool semanticOk = semantic.analyze(ast);
     
     if (!semanticOk) {
-        std::cout << "REJEITADO" << std::endl;
+        std::cout << logError("REJEITADO") << std::endl;
         std::cout << semantic.getError() << std::endl;
         delete ast;
         return false;
