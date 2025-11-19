@@ -1,9 +1,0 @@
-function teste() {
-    return x + 5;
-}
-
-function main() {
-    y = funcaoInexistente(10);
-    return y;
-}
-
