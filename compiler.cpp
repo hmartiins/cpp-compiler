@@ -51,7 +51,7 @@ bool Compiler::compile(const std::string& source) {
         return false;
     }
     
-    if (verbose) std::cout << "Árvore sintática construída com sucesso." << std::endl << std::endl;
+    if (verbose) std::cout << logSuccess("[SUCCESS] Árvore sintática construída com sucesso.") << std::endl << std::endl;
     
     // Fase 3: Análise Semântica
     if (verbose) std::cout << "=== ANÁLISE SEMÂNTICA ===" << std::endl;
