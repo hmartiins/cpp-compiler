@@ -1,4 +1,5 @@
 #include "semantic.h"
+#include "utils.h"
 
 SemanticAnalyzer::SemanticAnalyzer() : currentFunction(nullptr) {}
 
@@ -89,7 +90,7 @@ bool SemanticAnalyzer::analyzeNode(ASTNode* node) {
                         
                         // Verificar duplicação
                         if (functions.find(funcName) != functions.end()) {
-                            errorMsg = "[ERROR] Erro semântico: função '" + funcName + "' já foi declarada";
+                            logError("[ERROR] Erro semântico: função '" + funcName + "' já foi declarada");
                             return false;
                         }
                         
@@ -196,7 +197,7 @@ bool SemanticAnalyzer::analyzeExpr(ASTNode* node) {
         
         // Verificar se é variável ou parâmetro
         if (!checkIdentifier(idName)) {
-            errorMsg = "[ERROR] Erro semântico: identificador '" + idName + "' não foi declarado";
+            logError("[ERROR] Erro semântico: identificador '" + idName + "' não foi declarado");
             return false;
         }
         
@@ -210,7 +211,7 @@ bool SemanticAnalyzer::analyzeExpr(ASTNode* node) {
             
             // Verificar se função existe
             if (functions.find(funcName) == functions.end()) {
-                errorMsg = "[ERROR] Erro semântico: função '" + funcName + "' não foi declarada";
+                logError("[ERROR] Erro semântico: função '" + funcName + "' não foi declarada");
                 return false;
             }
             
@@ -219,9 +220,9 @@ bool SemanticAnalyzer::analyzeExpr(ASTNode* node) {
             int expectedCount = functions[funcName].params.size();
             
             if (argsCount != expectedCount) {
-                errorMsg = "[ERROR] Erro semântico: função '" + funcName + "' espera " + 
-                          std::to_string(expectedCount) + " argumento(s), mas " + 
-                          std::to_string(argsCount) + " foi(ram) fornecido(s)";
+                logError("[ERROR] Erro semântico: função '" + funcName + "' espera " + 
+                         std::to_string(expectedCount) + " argumento(s), mas " + 
+                         std::to_string(argsCount) + " foi(ram) fornecido(s)");
                 return false;
             }
         }
@@ -245,5 +246,9 @@ bool SemanticAnalyzer::analyze(ASTNode* root) {
 
 std::string SemanticAnalyzer::getError() const {
     return errorMsg;
+}
+
+void SemanticAnalyzer::logError(const std::string& msg) {
+    errorMsg = ::logError(msg);
 }
 

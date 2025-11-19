@@ -4,7 +4,7 @@ CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -O2
 TARGET = compiler
 
-SOURCES = token.cpp lexer.cpp ast.cpp parser.cpp semantic.cpp compiler.cpp main.cpp
+SOURCES = token.cpp lexer.cpp ast.cpp parser.cpp semantic.cpp compiler.cpp main.cpp utils.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(TARGET)

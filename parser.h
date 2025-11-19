@@ -3,6 +3,7 @@
 
 #include "token.h"
 #include "ast.h"
+#include "utils.h"
 #include <vector>
 #include <string>
 
@@ -19,6 +20,7 @@ private:
     void advance();
     bool match(TokenType type);
     bool expect(TokenType type, const std::string& msg);
+    void logError(const std::string& msg);
     
     // Regras de produção
     ASTNode* parseProgram();

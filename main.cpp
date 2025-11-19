@@ -1,4 +1,5 @@
 #include "compiler.h"
+#include "utils.h"
 #include <iostream>
 #include <string>
 
@@ -23,13 +24,13 @@ int main(int argc, char* argv[]) {
     
     // Verificar se arquivo foi fornecido
     if (filename.empty()) {
-        std::cerr << "[ERROR] Uso correto: " << argv[0] << " [-v] arquivo.neto" << std::endl;
+        std::cerr << logError("[ERROR] Uso correto: " + std::string(argv[0]) + " [-v] arquivo.neto") << std::endl;
         return 1;
     }
     
     // Verificar extensão .neto
     if (!hasNetoExtension(filename)) {
-        std::cerr << "[ERROR] Extensão inválida: o arquivo deve ter extensão .neto" << std::endl;
+        std::cerr << logError("[ERROR] Extensão inválida: o arquivo deve ter extensão .neto") << std::endl;
         std::cerr << "Exemplo de uso: " << argv[0] << " programa.neto" << std::endl;
         return 1;
     }

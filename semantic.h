@@ -2,6 +2,7 @@
 #define SEMANTIC_H
 
 #include "ast.h"
+#include "utils.h"
 #include <string>
 #include <vector>
 #include <map>
@@ -29,6 +30,7 @@ private:
     bool checkIdentifier(const std::string& id);
     void collectLocalVars(ASTNode* stmtNode);
     int countArguments(ASTNode* argsNode);
+    void logError(const std::string& msg);
     
 public:
     SemanticAnalyzer();

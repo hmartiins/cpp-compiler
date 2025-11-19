@@ -3,9 +3,11 @@
 #include "parser.h"
 #include "semantic.h"
 #include "token.h"
+#include "utils.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string>
 
 Compiler::Compiler(bool v) : verbose(v) {}
 
@@ -21,8 +23,8 @@ bool Compiler::compile(const std::string& source) {
     for (const auto& tok : tokens) {
         if (tok.type == UNKNOWN) {
             std::cout << "REJEITADO" << std::endl;
-            std::cout << "[ERROR] Erro léxico na linha " << tok.line << ", coluna " << tok.column 
-                     << ": caractere inválido '" << tok.lexeme << "'" << std::endl;
+            std::cout << logError("[ERROR] Erro léxico na linha " + std::to_string(tok.line) + ", coluna " + 
+                     std::to_string(tok.column) + ": caractere inválido '" + tok.lexeme + "'") << std::endl;
             return false;
         }
     }
@@ -74,7 +76,7 @@ bool Compiler::compile(const std::string& source) {
 bool Compiler::compileFile(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
-        std::cerr << "[ERROR] Não foi possível abrir o arquivo '" << filename << "'" << std::endl;
+        std::cerr << logError("[ERROR] Não foi possível abrir o arquivo '" + filename + "'") << std::endl;
         return false;
     }
     
