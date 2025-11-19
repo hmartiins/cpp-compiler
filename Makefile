@@ -3,15 +3,20 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -O2
 TARGET = compiler
-SOURCE = compiler.cpp
+
+SOURCES = token.cpp lexer.cpp ast.cpp parser.cpp semantic.cpp compiler.cpp main.cpp
+OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(TARGET)
 
-$(TARGET): $(SOURCE)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SOURCE)
+$(TARGET): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJECTS)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) $(OBJECTS)
 
 test: $(TARGET)
 	@echo "=== Testando código válido ==="
