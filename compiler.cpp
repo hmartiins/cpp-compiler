@@ -146,7 +146,7 @@ private:
 public:
     Lexer(const string& source) : input(source), pos(0), line(1), column(1) {
         // Inicializar palavras-chave
-        keywords["function"] = FUNCTION;
+        keywords["func"] = FUNCTION;
         keywords["return"] = RETURN;
     }
     
@@ -423,7 +423,7 @@ ASTNode* Parser::parseFunctionList() {
 ASTNode* Parser::parseFunctionDecl() {
     ASTNode* node = new ASTNode(FUNC_DECL);
     
-    if (!expect(FUNCTION, "esperado 'function'")) {
+    if (!expect(FUNCTION, "esperado 'func'")) {
         delete node;
         return nullptr;
     }
