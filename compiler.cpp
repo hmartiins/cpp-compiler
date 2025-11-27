@@ -1,8 +1,6 @@
 #include "compiler.h"
-#include "lexer.h"
-#include "parser.h"
+#include "parser_interface.h"
 #include "semantic.h"
-#include "token.h"
 #include "utils.h"
 #include <iostream>
 #include <fstream>
@@ -14,44 +12,24 @@ Compiler::Compiler(bool v) : verbose(v) {}
 bool Compiler::compile(const std::string& source) {
     sourceCode = source;
     
-    // Fase 1: Análise Léxica
-    if (verbose) std::cout << "=== ANÁLISE LÉXICA ===" << std::endl;
-    Lexer lexer(sourceCode);
-    std::vector<Token> tokens = lexer.tokenize();
+    // Fase 1 e 2: Análise Léxica e Sintática (usando Bison/Flex)
+    // O Bison/Flex fazem ambas as análises em conjunto
+    if (verbose) std::cout << "=== ANÁLISE LÉXICA E SINTÁTICA (LR com Bison) ===" << std::endl;
     
-    // Verificar erros léxicos
-    for (const auto& tok : tokens) {
-        if (tok.type == UNKNOWN) {
-            std::cout << logError("REJEITADO") << std::endl;
-            std::cout << logError("[ERROR] Erro léxico na linha " + std::to_string(tok.line) + ", coluna " + 
-                     std::to_string(tok.column) + ": caractere inválido '" + tok.lexeme + "'") << std::endl;
-            return false;
-        }
-    }
+    std::string parserError;
+    ASTNode* ast = parse_source(source, parserError);
     
-    if (verbose) {
-        for (const auto& tok : tokens) {
-            std::cout << tokenTypeToString(tok.type) << " ";
-            if (tok.type == ID || tok.type == NUM) {
-                std::cout << "(" << tok.lexeme << ")";
-            }
-            std::cout << std::endl;
-        }
-        std::cout << std::endl;
-    }
-    
-    // Fase 2: Análise Sintática
-    if (verbose) std::cout << "=== ANÁLISE SINTÁTICA ===" << std::endl;
-    Parser parser(tokens);
-    ASTNode* ast = parser.parse();
-    
-    if (!ast) {
+    if (!ast || !parserError.empty()) {
         std::cout << logError("REJEITADO") << std::endl;
-        std::cout << parser.getError() << std::endl;
+        if (!parserError.empty()) {
+            std::cout << parserError << std::endl;
+        } else {
+            std::cout << logError("[ERROR] Erro na análise sintática") << std::endl;
+        }
         return false;
     }
     
-    if (verbose) std::cout << logSuccess("[SUCCESS] Árvore sintática construída com sucesso.") << std::endl << std::endl;
+    if (verbose) std::cout << logSuccess("[SUCCESS] Árvore sintática construída com sucesso usando parser LR (Bison).") << std::endl << std::endl;
     
     // Fase 3: Análise Semântica
     if (verbose) std::cout << "=== ANÁLISE SEMÂNTICA ===" << std::endl;
