@@ -1,0 +1,15 @@
+
+=== Funcao: soma ===
+  t0 = a + b
+  RETURN t0
+=== Fim: soma ===
+
+=== Funcao: subtracao ===
+  t1 = x - y
+  RETURN t1
+=== Fim: subtracao ===
+
+=== Funcao: multiplicacao ===
+  t2 = m * n
+  RETURN t2
+=== Fim: multiplicacao ===

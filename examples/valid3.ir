@@ -1,0 +1,42 @@
+
+=== Funcao: calcular ===
+  t0 = a + b
+  x = t0
+  t1 = x * c
+  y = t1
+  t2 = y / 2
+  z = t2
+  RETURN z
+=== Fim: calcular ===
+
+=== Funcao: media ===
+  t3 = a + b
+  soma = t3
+  t4 = soma / 2
+  resultado = t4
+  RETURN resultado
+=== Fim: media ===
+
+=== Funcao: formula ===
+  t5 = x * 2
+  a = t5
+  t6 = a + 5
+  b = t6
+  t7 = b ^ 2
+  c = t7
+  t8 = c - 10
+  d = t8
+  RETURN d
+=== Fim: formula ===
+
+=== Funcao: chamarOutra ===
+  t9 = CALL quadrado(p)
+  resultado = t9
+  t10 = resultado + 1
+  RETURN t10
+=== Fim: chamarOutra ===
+
+=== Funcao: quadrado ===
+  t11 = n * n
+  RETURN t11
+=== Fim: quadrado ===

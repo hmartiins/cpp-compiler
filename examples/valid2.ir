@@ -1,0 +1,18 @@
+
+=== Funcao: quadrado ===
+  t0 = x * x
+  RETURN t0
+=== Fim: quadrado ===
+
+=== Funcao: cubo ===
+  t1 = n * n
+  temp = t1
+  t2 = temp * n
+  resultado = t2
+  RETURN resultado
+=== Fim: cubo ===
+
+=== Funcao: potencia ===
+  t3 = base ^ exp
+  RETURN t3
+=== Fim: potencia ===
