@@ -11,7 +11,7 @@ BISON_GEN = parser.tab.cc parser.tab.hh location.hh position.hh stack.hh
 FLEX_GEN = lex.yy.cc
 
 # Fontes originais
-ORIGINAL_SOURCES = token.cpp ast.cpp semantic.cpp compiler.cpp main.cpp utils.cpp parser_interface.cpp
+ORIGINAL_SOURCES = token.cpp ast.cpp semantic.cpp compiler.cpp main.cpp utils.cpp parser_interface.cpp codegen.cpp
 ORIGINAL_OBJECTS = $(ORIGINAL_SOURCES:.cpp=.o)
 
 # Objetos gerados

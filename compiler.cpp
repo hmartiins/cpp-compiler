@@ -1,6 +1,7 @@
 #include "compiler.h"
 #include "parser_interface.h"
 #include "semantic.h"
+#include "codegen.h"
 #include "utils.h"
 #include <iostream>
 #include <fstream>
@@ -45,6 +46,18 @@ bool Compiler::compile(const std::string& source) {
     
     if (verbose) std::cout << logSuccess("[SUCCESS] Análise semântica concluída com sucesso.") << std::endl << std::endl;
     
+    // Fase 4: Geração de Código Intermediário
+    if (verbose) std::cout << "=== GERAÇÃO DE CÓDIGO INTERMEDIÁRIO ===" << std::endl;
+    CodeGenerator codegen;
+    std::vector<ThreeAddressCode> intermediateCode = codegen.generate(ast);
+    
+    if (verbose) {
+        std::cout << logSuccess("[SUCCESS] Código intermediário gerado com sucesso.") << std::endl;
+        std::cout << "\n--- Código de Três Endereços ---\n";
+        std::cout << codegen.toString();
+        std::cout << "--- Fim do Código Intermediário ---\n\n";
+    }
+    
     std::cout << logSuccess("[SUCCESS] Compilação concluída com sucesso.") << std::endl;
     
     delete ast;
@@ -63,6 +76,40 @@ bool Compiler::compileFile(const std::string& filename) {
     sourceCode = buffer.str();
     file.close();
     
-    return compile(sourceCode);
+    bool result = compile(sourceCode);
+    
+    // Se compilação foi bem-sucedida, salvar código intermediário em arquivo
+    if (result) {
+        // Gerar código intermediário novamente para salvar
+        std::string parserError;
+        ASTNode* ast = parse_source(sourceCode, parserError);
+        if (ast) {
+            CodeGenerator codegen;
+            codegen.generate(ast);
+            
+            // Criar nome do arquivo de saída: nome.ir
+            std::string outputFile = filename;
+            size_t pos = outputFile.find_last_of('.');
+            if (pos != std::string::npos) {
+                outputFile = outputFile.substr(0, pos) + ".ir";
+            } else {
+                outputFile += ".ir";
+            }
+            
+            // Salvar em arquivo
+            std::ofstream outFile(outputFile);
+            if (outFile.is_open()) {
+                outFile << codegen.toString();
+                outFile.close();
+                if (verbose) {
+                    std::cout << logSuccess("[INFO] Código intermediário salvo em: " + outputFile) << std::endl;
+                }
+            }
+            
+            delete ast;
+        }
+    }
+    
+    return result;
 }
 
