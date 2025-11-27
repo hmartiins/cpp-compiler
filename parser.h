@@ -8,8 +8,7 @@
 #include <string>
 
 // Parser Recursivo Descendente (simplificado como LR)
-// Para um projeto acadêmico completo com LR real, seria necessário gerar as tabelas
-// Aqui implementamos um parser recursivo que simula comportamento LR
+// Parser recursivo que simula comportamento LR
 class Parser {
 private:
     std::vector<Token> tokens;
