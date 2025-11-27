@@ -60,7 +60,10 @@ int yycolumn = 1;
 "func"          { TOKEN(FUNCTION_TOKEN); }
 "return"        { TOKEN(RETURN_TOKEN); }
 
-[0-9]+          { TOKEN(NUM_TOKEN); }
+[0-9]+\.[0-9]+  { TOKEN(NUM_TOKEN); }  /* ponto flutuante: 123.45 */
+[0-9]+\.        { TOKEN(NUM_TOKEN); }  /* ponto flutuante: 123. */
+\.[0-9]+        { TOKEN(NUM_TOKEN); }  /* ponto flutuante: .5 */
+[0-9]+          { TOKEN(NUM_TOKEN); }  /* inteiro: 123 */
 [a-zA-Z_][a-zA-Z0-9_]* { TOKEN(ID_TOKEN); }
 
 "+"             { TOKEN(PLUS_TOKEN); }

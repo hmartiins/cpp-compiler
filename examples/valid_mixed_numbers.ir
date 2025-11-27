@@ -1,0 +1,11 @@
+
+=== Funcao: teste ===
+  inteiro = 42
+  flutuante1 = 3.14
+  flutuante2 = 0.5
+  flutuante3 = 10.
+  t0 = flutuante1 * flutuante2
+  t1 = inteiro + t0
+  resultado = t1
+  RETURN resultado
+=== Fim: teste ===

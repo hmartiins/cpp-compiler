@@ -1,0 +1,10 @@
+func teste() {
+    // Testando diferentes formatos de números
+    inteiro = 42;
+    flutuante1 = 3.14;
+    flutuante2 = 0.5;
+    flutuante3 = 10.;
+    resultado = inteiro + flutuante1 * flutuante2;
+    return resultado;
+}
+

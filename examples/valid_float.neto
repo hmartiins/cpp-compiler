@@ -1,0 +1,20 @@
+func soma(a, b) {
+    return a + b;
+}
+
+func media(x, y) {
+    resultado = (x + y) / 2.0;
+    return resultado;
+}
+
+func calcular() {
+    pi = 3.14159;
+    raio = 5.5;
+    area = pi * raio * raio;
+    return area;
+}
+
+func potencia(base, exp) {
+    return base ^ exp;
+}
+

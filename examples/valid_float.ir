@@ -1,0 +1,26 @@
+
+=== Funcao: soma ===
+  t0 = a + b
+  RETURN t0
+=== Fim: soma ===
+
+=== Funcao: media ===
+  t1 = x + y
+  t2 = t1 / 2.0
+  resultado = t2
+  RETURN resultado
+=== Fim: media ===
+
+=== Funcao: calcular ===
+  pi = 3.14159
+  raio = 5.5
+  t3 = pi * raio
+  t4 = t3 * raio
+  area = t4
+  RETURN area
+=== Fim: calcular ===
+
+=== Funcao: potencia ===
+  t5 = base ^ exp
+  RETURN t5
+=== Fim: potencia ===
